@@ -1,0 +1,2714 @@
+/*
+ * © 2025 Noel Messages - All Rights Reserved.
+ * Unauthorized copying is prohibited.
+ */
+
+/* ==========================================
+   NOEL TREE - MAIN STYLES
+   ========================================== */
+
+/* CSS Variables */
+:root {
+    /* Colors */
+    --color-tree-green: #228B22;
+    --color-tree-dark: #1a6b1a;
+    --color-red: #DC143C;
+    --color-red-dark: #b01030;
+    --color-gold: #FFD700;
+    --color-gold-light: #ffe44d;
+    --color-white: #ffffff;
+    --color-snow: #f0f8ff;
+    --color-trunk: #8B4513;
+
+    /* Background Gradients */
+    --bg-gradient: linear-gradient(135deg, #0c1445 0%, #1a237e 50%, #283593 100%);
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+
+    /* Shadows */
+    --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --shadow-glow: 0 0 20px rgba(255, 215, 0, 0.5);
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+
+    /* Font */
+    --font-main: 'Outfit', sans-serif;
+    --font-christmas: 'Mountains of Christmas', cursive;
+}
+
+/* Reset and Basic Styles */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background: var(--bg-gradient);
+    min-height: 100vh;
+    color: var(--color-white);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ==========================================
+   SNOWFLAKE ANIMATION
+   ========================================== */
+
+.snowflakes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.snowflake {
+    position: absolute;
+    top: -50px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.5rem;
+    animation: snowfall linear infinite;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.snowflake:nth-child(1) {
+    left: 5%;
+    animation-duration: 8s;
+    animation-delay: 0s;
+    font-size: 0.7rem;
+}
+
+.snowflake:nth-child(2) {
+    left: 15%;
+    animation-duration: 12s;
+    animation-delay: 1s;
+    font-size: 1.5rem;
+}
+
+.snowflake:nth-child(3) {
+    left: 25%;
+    animation-duration: 10s;
+    animation-delay: 2s;
+    font-size: 1.2rem;
+}
+
+.snowflake:nth-child(4) {
+    left: 35%;
+    animation-duration: 14s;
+    animation-delay: 0.5s;
+    font-size: 0.7rem;
+}
+
+.snowflake:nth-child(5) {
+    left: 45%;
+    animation-duration: 9s;
+    animation-delay: 3s;
+    font-size: 1.8rem;
+}
+
+.snowflake:nth-child(6) {
+    left: 55%;
+    animation-duration: 11s;
+    animation-delay: 1.5s;
+    font-size: 1.3rem;
+}
+
+.snowflake:nth-child(7) {
+    left: 65%;
+    animation-duration: 13s;
+    animation-delay: 2.5s;
+    font-size: 0.7rem;
+}
+
+.snowflake:nth-child(8) {
+    left: 75%;
+    animation-duration: 10s;
+    animation-delay: 0s;
+    font-size: 1.6rem;
+}
+
+.snowflake:nth-child(9) {
+    left: 85%;
+    animation-duration: 15s;
+    animation-delay: 4s;
+    font-size: 1.1rem;
+}
+
+.snowflake:nth-child(10) {
+    left: 95%;
+    animation-duration: 8s;
+    animation-delay: 2s;
+    font-size: 1.4rem;
+}
+
+@keyframes snowfall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0.3;
+    }
+}
+
+/* ==========================================
+   SCREENS
+   ========================================== */
+
+.screen {
+    display: none;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.screen.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==========================================
+   LOADING SCREEN
+   ========================================== */
+
+#loading-screen {
+    background: var(--bg-gradient);
+}
+
+.loading-container {
+    text-align: center;
+}
+
+.loading-spinner {
+    font-size: 4rem;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-container p {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+/* ==========================================
+   OFF-SEASON SCREEN
+   ========================================== */
+
+.off-season-message {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 30px;
+    margin-top: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.off-season-message p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.off-season-message p:last-of-type {
+    margin-bottom: 0;
+}
+
+.countdown {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.countdown p {
+    margin: 0;
+    color: var(--color-gold);
+    font-size: 1.1rem;
+}
+
+/* ==========================================
+   BADGE
+   ========================================== */
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 8px;
+    background: var(--color-gold);
+    color: #1a1a2e;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    margin-left: 8px;
+}
+
+/* ==========================================
+   HOME SCREEN
+   ========================================== */
+
+.home-container {
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.logo-section {
+    margin-bottom: 40px;
+}
+
+.tree-icon {
+    font-size: 5rem;
+    animation: bounce 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(34, 139, 34, 0.5));
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.title {
+    font-family: var(--font-christmas);
+    font-size: 3rem;
+    color: var(--color-gold);
+    text-shadow:
+        2px 2px 4px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(255, 215, 0, 0.5);
+    margin-top: 10px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--color-snow);
+    margin-top: 10px;
+    opacity: 0.9;
+    text-align: center;
+}
+
+/* Buttons */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+    /* Slight spacing */
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 50px;
+    font-family: var(--font-main);
+    font-size: 0.7rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-red) 0%, var(--color-red-dark) 100%);
+    color: var(--color-white);
+    box-shadow: 0 4px 15px rgba(220, 20, 60, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(220, 20, 60, 0.5);
+}
+
+.btn-secondary {
+    background: var(--glass-bg);
+    color: var(--color-white);
+    border: 2px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+}
+
+.btn-icon {
+    font-size: 1.3rem;
+}
+
+.btn-full {
+    width: 100%;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9rem;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.footer-text {
+    margin-top: 50px;
+    font-size: 1.5rem;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+    }
+
+    to {
+        text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    }
+}
+
+/* ==========================================
+   MODAL
+   ========================================== */
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal.active {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background: linear-gradient(135deg, rgba(30, 60, 114, 0.95) 0%, rgba(42, 82, 152, 0.95) 100%);
+    border-radius: 24px;
+    padding: 30px;
+    max-width: 400px;
+    width: 100%;
+    position: relative;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-soft);
+    animation: slideUp 0.3s ease;
+}
+
+.modal-large {
+    max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: var(--color-white);
+    font-size: 1.8rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity var(--transition-fast);
+}
+
+.modal-close:hover {
+    opacity: 1;
+}
+
+.modal h2 {
+    font-family: var(--font-christmas);
+    font-size: 1.8rem;
+    color: var(--color-gold);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.modal p {
+    text-align: center;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+/* Input Group */
+.input-group {
+    display: flex;
+    gap: 10px;
+}
+
+.input-group input {
+    flex: 1;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid var(--glass-border);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-white);
+    font-family: var(--font-main);
+    font-size: 0.7rem;
+    transition: all var(--transition-fast);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--color-gold);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.input-hint {
+    font-size: 0.7rem;
+    opacity: 0.6;
+    margin-top: 10px;
+}
+
+/* Form */
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--color-gold-light);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.char-count {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+/* ==========================================
+   TREE SCREEN
+   ========================================== */
+
+#tree-screen {
+    justify-content: flex-start;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+#tree-screen.active {
+    justify-content: flex-start;
+    min-height: auto;
+}
+
+.tree-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 500px;
+    padding: 8px;
+    background: var(--glass-bg);
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    margin-bottom: 10px;
+}
+
+.btn-icon-only {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-white);
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-icon-only:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.tree-id-display {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tree-id-display .label {
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+.tree-id-value {
+    font-family: monospace;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-gold);
+    letter-spacing: 2px;
+}
+
+.btn-copy {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: all var(--transition-fast);
+}
+
+.btn-copy:hover {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+/* ==========================================
+   TREE DESIGN
+   ========================================== */
+
+.tree-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px 0;
+}
+
+/* STAR SIZE UPDATED */
+.tree-star {
+    font-size: 4.5rem !important;
+    animation: starGlow 1.5s ease-in-out infinite alternate;
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.9));
+    z-index: 10;
+    margin-bottom: -15px;
+}
+
+@keyframes starGlow {
+    from {
+        transform: scale(1) rotate(-5deg);
+        filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.6));
+    }
+
+    to {
+        transform: scale(1.1) rotate(5deg);
+        filter: drop-shadow(0 0 25px rgba(255, 215, 0, 1));
+    }
+}
+
+/* TREE SIZE UPDATED */
+.christmas-tree {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: scale(1.5) !important;
+    transform-origin: top center;
+    margin-top: 10px;
+    margin-bottom: 150px;
+    z-index: 10;
+}
+
+.tree-layer {
+    width: 0;
+    height: 0;
+    border-left: solid transparent;
+    border-right: solid transparent;
+    border-bottom-style: solid;
+    position: relative;
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.4));
+}
+
+/* Realistic tree gradient using pseudo-elements */
+.tree-layer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            rgba(0, 0, 0, 0.2) 0%,
+            transparent 30%,
+            transparent 70%,
+            rgba(0, 0, 0, 0.1) 100%);
+    pointer-events: none;
+}
+
+.tree-layer::after {
+    content: '';
+    position: absolute;
+    bottom: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: solid transparent;
+    border-right: solid transparent;
+    border-bottom: solid var(--color-tree-dark);
+    opacity: 0.5;
+    z-index: -1;
+}
+
+.layer-1 {
+    border-left-width: 45px;
+    border-right-width: 45px;
+    border-bottom-width: 55px;
+    border-bottom-color: #2d7d2d;
+    margin-top: -8px;
+}
+
+.layer-2 {
+    border-left-width: 65px;
+    border-right-width: 65px;
+    border-bottom-width: 70px;
+    border-bottom-color: #28722d;
+    margin-top: -20px;
+}
+
+.layer-3 {
+    border-left-width: 85px;
+    border-right-width: 85px;
+    border-bottom-width: 85px;
+    border-bottom-color: #236b28;
+    margin-top: -25px;
+}
+
+.layer-4 {
+    border-left-width: 105px;
+    border-right-width: 105px;
+    border-bottom-width: 100px;
+    border-bottom-color: #1e6023;
+    margin-top: -28px;
+}
+
+.tree-trunk {
+    width: 35px;
+    height: 45px;
+    background: linear-gradient(90deg, #4a2c17 0%, #6B3E26 30%, #8B4513 50%, #6B3E26 70%, #4a2c17 100%);
+    border-radius: 0 0 6px 6px;
+    margin-top: -3px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), inset 0 -5px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Dynamic Light and Ornament Styles */
+.deco-ornament {
+    position: absolute;
+    font-size: 0.9rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    z-index: 5;
+    /* Static - No animation */
+}
+
+/* String */
+.deco-ornament .string {
+    position: absolute;
+    bottom: 80%;
+    /* Start slightly inside the ball */
+    left: 50%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.6);
+    transform: translateX(-50%);
+    z-index: -1;
+}
+
+.tree-lights {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.light {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    box-shadow: 0 0 5px currentColor;
+    animation: lightTwinkle 3s ease-in-out infinite alternate;
+}
+
+@keyframes lightTwinkle {
+    0% {
+        opacity: 0.6;
+        transform: scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+.light-7 {
+    top: 190px;
+    left: calc(50% - 70px);
+    background: var(--color-red);
+    animation-delay: 0.1s;
+}
+
+/* Ornaments (Messages) */
+.tree-ornaments {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    height: 350px;
+    pointer-events: none;
+    z-index: 50;
+}
+
+.ornament {
+    position: absolute;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    pointer-events: auto;
+    animation: ornamentSway 3s ease-in-out infinite;
+    transition: transform var(--transition-fast);
+    backdrop-filter: blur(5px);
+}
+
+.ornament:hover {
+    transform: scale(1.3);
+    z-index: 9999;
+}
+
+.ornament:nth-child(odd) {
+    animation-delay: 0s;
+}
+
+.ornament:nth-child(even) {
+    animation-delay: 1.5s;
+}
+
+@keyframes ornamentSway {
+
+    0%,
+    100% {
+        transform: rotate(-3deg);
+    }
+
+    50% {
+        transform: rotate(3deg);
+    }
+}
+
+@keyframes ornamentSwayCenter {
+
+    0%,
+    100% {
+        transform: translateX(-50%) rotate(-3deg);
+    }
+
+    50% {
+        transform: translateX(-50%) rotate(3deg);
+    }
+}
+
+/* Special animation for center ornaments */
+.ornament.pos-1,
+.ornament.pos-6,
+.ornament.pos-7,
+.ornament.pos-8 {
+    animation-name: ornamentSwayCenter;
+}
+
+/* Ornament Positions - EVEN HIGHER */
+/* Peak */
+/* Ornament Positions - GUARANTEED ALIGNMENT */
+/* Peak */
+.ornament.pos-1 {
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Layer 2 (3 Ornaments) */
+.ornament.pos-2 {
+    top: 60px;
+    left: 30%;
+}
+
+.ornament.pos-6 {
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 60;
+}
+
+.ornament.pos-3 {
+    top: 60px;
+    right: 30%;
+}
+
+/* Layer 3 */
+.ornament.pos-4 {
+    top: 100px;
+    left: 35%;
+}
+
+.ornament.pos-5 {
+    top: 100px;
+    right: 35%;
+}
+
+/* Layer 4 (1 Ornament - Single) */
+.ornament.pos-8 {
+    top: 140px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Layer 5 (3 Ornaments) */
+.ornament.pos-9 {
+    top: 180px;
+    left: 25%;
+}
+
+.ornament.pos-7 {
+    top: 180px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.ornament.pos-10 {
+    top: 180px;
+    right: 25%;
+}
+
+/* Ornament Tooltip */
+.ornament-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.95);
+    color: white;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    max-width: 220px;
+    min-width: 150px;
+    white-space: normal;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-fast);
+    z-index: 99999;
+    pointer-events: none;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ornament:hover .ornament-tooltip {
+    opacity: 1;
+    visibility: visible;
+    bottom: calc(100% + 10px);
+}
+
+.ornament-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 8px solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.9);
+}
+
+.tooltip-name {
+    font-weight: 600;
+    color: var(--color-gold);
+    margin-bottom: 5px;
+}
+
+/* Tree Actions (Buttons) */
+.tree-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 120px;
+    /* More spacing */
+    z-index: 100;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+/* Decorative Ornaments */
+.decorative-ornaments {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    height: 320px;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.deco-ornament {
+    position: absolute;
+    font-size: 0.9rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    animation: ornamentFloat 4s ease-in-out infinite;
+}
+
+/* String Effect - Longer and higher */
+.deco-ornament::before {
+    content: '';
+    position: absolute;
+    top: -45px;
+    left: 50%;
+    width: 1px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.6);
+    transform: translateX(-50%);
+    z-index: -1;
+}
+
+/* Adjust Ornament Positions - More inside */
+.deco-1 {
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.deco-2 {
+    top: 75px;
+    left: 42%;
+}
+
+.deco-3 {
+    top: 75px;
+    right: 42%;
+}
+
+.deco-4 {
+    top: 115px;
+    left: 35%;
+}
+
+.deco-5 {
+    top: 115px;
+    right: 35%;
+}
+
+.deco-6 {
+    top: 155px;
+    left: 30%;
+}
+
+.deco-7 {
+    top: 155px;
+    right: 30%;
+}
+
+.deco-8 {
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.deco-9 {
+    top: 200px;
+    left: 25%;
+}
+
+.deco-10 {
+    top: 200px;
+    right: 25%;
+}
+
+.deco-11 {
+    top: 200px;
+    left: 42%;
+}
+
+.deco-12 {
+    top: 200px;
+    right: 42%;
+}
+
+/* Fix Light Positions (More inside) */
+.light-1 {
+    top: 45px;
+    left: calc(50% - 15px);
+}
+
+.light-2 {
+    top: 45px;
+    left: calc(50% + 8px);
+}
+
+.light-3 {
+    top: 85px;
+    left: calc(50% - 30px);
+}
+
+.light-4 {
+    top: 85px;
+    left: calc(50% + 22px);
+}
+
+.light-5 {
+    top: 135px;
+    left: calc(50% - 40px);
+}
+
+.light-6 {
+    top: 135px;
+    left: calc(50% + 35px);
+}
+
+.light-7 {
+    top: 190px;
+    left: calc(50% - 60px);
+}
+
+.light-8 {
+    top: 190px;
+    left: calc(50% + 55px);
+}
+
+.light-9 {
+    top: 65px;
+    left: calc(50% - 20px);
+}
+
+.light-10 {
+    top: 65px;
+    left: calc(50% + 15px);
+}
+
+.light-11 {
+    top: 115px;
+    left: calc(50%);
+    transform: translateX(-50%);
+}
+
+.light-12 {
+    top: 165px;
+    left: calc(50% - 50px);
+}
+
+.light-13 {
+    top: 165px;
+    left: calc(50% + 45px);
+}
+
+.light-14 {
+    top: 165px;
+    left: calc(50%);
+    transform: translateX(-50%);
+}
+
+.light-15 {
+    top: 225px;
+    left: calc(50% - 70px);
+}
+
+.light-16 {
+    top: 225px;
+    left: calc(50% + 65px);
+}
+
+@keyframes ornamentFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+/* Gift Boxes Container */
+.gift-boxes-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+    /* Lower than tree (z-index: 10) and buttons */
+}
+
+.gift-box {
+    position: absolute;
+    font-size: 2rem;
+    cursor: pointer;
+    pointer-events: auto;
+    /* transition removed for instant teleport */
+    animation: giftFloat 3s ease-in-out infinite;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    z-index: 2;
+}
+
+.gift-box:hover {
+    transform: scale(1.3) rotate(10deg);
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.5));
+}
+
+@keyframes giftFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateY(-8px) rotate(5deg);
+    }
+}
+
+/* Background Stars */
+.background-stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    /* At the back, on top of body */
+    overflow: hidden;
+}
+
+.bg-star {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.8);
+    animation: starTwinkle var(--twinkle-duration) ease-in-out infinite;
+    animation-delay: var(--twinkle-delay);
+}
+
+@keyframes starTwinkle {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(0.8);
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 215, 0, 0.5);
+    }
+}
+
+/* Fireworks Container */
+.fireworks-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100000;
+    overflow: hidden;
+}
+
+/* Firework Particles */
+.firework-particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: fireworkExplode 1.5s ease-out forwards;
+}
+
+@keyframes fireworkExplode {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(var(--tx), var(--ty)) scale(0);
+    }
+}
+
+/* Firework Glow Effect */
+.firework-glow {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    animation: fireworkGlow 0.8s ease-out forwards;
+}
+
+@keyframes fireworkGlow {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+        box-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(3);
+        box-shadow: 0 0 5px currentColor;
+    }
+}
+
+/* Bottom Buttons */
+/* Bottom Buttons - Override if duplicated */
+.tree-actions {
+    margin-top: 50px;
+}
+
+/* ==========================================
+   MESSAGES LIST
+   ========================================== */
+
+.messages-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.message-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 15px;
+    transition: all var(--transition-fast);
+}
+
+.message-card:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(5px);
+}
+
+.hero-content {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 30px;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    color: var(--color-white);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-top: 10px;
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.message-sender {
+    font-weight: 600;
+    color: var(--color-gold);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.message-sender::before {
+    content: '🎄';
+}
+
+.message-date {
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+.message-text {
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+/* Delete Button */
+.btn-delete-message {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(220, 53, 69, 0.15);
+    border: 1px solid rgba(220, 53, 69, 0.3);
+    color: #ff6b6b;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    opacity: 0.7;
+    transition: all var(--transition-fast);
+}
+
+.message-card {
+    position: relative;
+    padding-bottom: 45px;
+}
+
+.message-card:hover .btn-delete-message {
+    opacity: 1;
+}
+
+.btn-delete-message:hover {
+    background: rgba(220, 53, 69, 0.8);
+    border-color: #dc3545;
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.4);
+}
+
+.no-messages {
+    text-align: center;
+    padding: 40px 20px;
+    opacity: 0.7;
+}
+
+.no-messages p:first-child {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+/* ==========================================
+   TOAST NOTIFICATION
+   ========================================== */
+
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--color-tree-green);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 50px;
+    font-weight: 500;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: all var(--transition-normal);
+    z-index: 3000;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+   ========================================== */
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 2.2rem;
+    }
+
+    .tree-icon {
+        font-size: 4rem;
+    }
+
+    .btn {
+        padding: 14px 24px;
+        font-size: 0.7rem;
+    }
+
+    .tree-header {
+        padding: 8px;
+    }
+
+    .tree-id-value {
+        font-size: 0.7rem;
+    }
+
+    .layer-1 {
+        border-left-width: 40px;
+        border-right-width: 40px;
+        border-bottom-width: 50px;
+    }
+
+    .layer-2 {
+        border-left-width: 55px;
+        border-right-width: 55px;
+        border-bottom-width: 65px;
+    }
+
+    .layer-3 {
+        border-left-width: 70px;
+        border-right-width: 70px;
+        border-bottom-width: 80px;
+    }
+
+    .layer-4 {
+        border-left-width: 85px;
+        border-right-width: 85px;
+        border-bottom-width: 95px;
+    }
+
+    .tree-ornaments {
+        width: 220px;
+        height: 280px;
+    }
+
+    .ornament {
+        width: 30px;
+        height: 30px;
+        font-size: 0.7rem;
+    }
+
+    .tree-star {
+        font-size: 2.5rem;
+    }
+
+    .gifts {
+        gap: 15px;
+    }
+
+    .gift {
+        font-size: 2rem;
+    }
+
+    .tree-actions {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .tree-actions .btn {
+        width: 100%;
+    }
+
+    .modal-content {
+        padding: 25px 20px;
+    }
+
+    .light {
+        width: 8px;
+        height: 8px;
+    }
+
+    .light-1 {
+        top: 50px;
+        left: calc(50% - 25px);
+    }
+
+    .light-2 {
+        top: 50px;
+        left: calc(50% + 15px);
+    }
+
+    .light-3 {
+        top: 95px;
+        left: calc(50% - 40px);
+    }
+
+    .light-4 {
+        top: 95px;
+        left: calc(50% + 30px);
+    }
+
+    .light-5 {
+        top: 145px;
+        left: calc(50% - 55px);
+    }
+
+    .light-6 {
+        top: 145px;
+        left: calc(50% + 45px);
+    }
+
+    .light-7 {
+        top: 195px;
+        left: calc(50% - 70px);
+    }
+
+    .light-8 {
+        top: 195px;
+        left: calc(50% + 60px);
+    }
+}
+
+@media (max-width: 360px) {
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .input-group {
+        flex-direction: column;
+    }
+
+    .input-group .btn {
+        width: 100%;
+    }
+}
+
+/* ==========================================
+   SCROLLBAR STYLE
+   ========================================== */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Modal Z-Index Fix */
+.modal-overlay,
+.screen-overlay,
+.modal {
+    z-index: 2000 !important;
+}
+
+/* =========================================
+   REVERT & NEW FEATURES (Garlands + Static)
+   ========================================= */
+
+/* Garlands (Gold Ribbons) */
+.garland {
+    position: absolute;
+    border-radius: 50%;
+    border-bottom: 4px solid #FFD700;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.6);
+    pointer-events: none;
+    opacity: 0.95;
+    z-index: 6;
+}
+
+.garland-1 {
+    width: 60%;
+    height: 50px;
+    top: 45px;
+    left: 20%;
+    transform: rotate(-8deg);
+}
+
+.garland-2 {
+    width: 80%;
+    height: 60px;
+    top: 95px;
+    left: 10%;
+    transform: rotate(5deg);
+}
+
+.garland-3 {
+    width: 95%;
+    height: 70px;
+    top: 150px;
+    left: 2.5%;
+    transform: rotate(-3deg);
+}
+
+.garland-4 {
+    width: 110%;
+    height: 80px;
+    top: 205px;
+    left: -5%;
+    transform: rotate(4deg);
+}
+
+/* Static Ornaments Positions (Restored) */
+.deco-ornament {
+    animation: none !important;
+}
+
+/* Ensure static */
+.deco-1 {
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.deco-2 {
+    top: 75px;
+    left: 42%;
+}
+
+.deco-3 {
+    top: 75px;
+    right: 42%;
+}
+
+.deco-4 {
+    top: 115px;
+    left: 35%;
+}
+
+.deco-5 {
+    top: 115px;
+    right: 35%;
+}
+
+.deco-6 {
+    top: 155px;
+    left: 30%;
+}
+
+.deco-7 {
+    top: 155px;
+    right: 30%;
+}
+
+.deco-8 {
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.deco-9 {
+    top: 200px;
+    left: 25%;
+}
+
+.deco-10 {
+    top: 200px;
+    right: 25%;
+}
+
+.deco-11 {
+    top: 200px;
+    left: 42%;
+}
+
+.deco-12 {
+    top: 200px;
+    right: 42%;
+}
+
+/* String restoration for static ornaments */
+.deco-ornament::before {
+    content: '';
+    position: absolute;
+    top: -45px;
+    left: 50%;
+    width: 1px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.6);
+    transform: translateX(-50%);
+    z-index: -1;
+}
+
+/* Static Lights (Restored & Enhanced) */
+.tree-lights {
+    z-index: 7;
+}
+
+.light {
+    animation: lightTwinkle 2s ease-in-out infinite alternate;
+}
+
+.light-1 {
+    top: 45px;
+    left: calc(50% - 15px);
+}
+
+.light-2 {
+    top: 45px;
+    left: calc(50% + 8px);
+}
+
+.light-3 {
+    top: 85px;
+    left: calc(50% - 30px);
+}
+
+.light-4 {
+    top: 85px;
+    left: calc(50% + 22px);
+}
+
+.light-5 {
+    top: 135px;
+    left: calc(50% - 40px);
+}
+
+.light-6 {
+    top: 135px;
+    left: calc(50% + 35px);
+}
+
+.light-7 {
+    top: 190px;
+    left: calc(50% - 60px);
+}
+
+.light-8 {
+    top: 190px;
+    left: calc(50% + 55px);
+}
+
+.light-9 {
+    top: 65px;
+    left: calc(50% - 20px);
+}
+
+.light-10 {
+    top: 65px;
+    left: calc(50% + 15px);
+}
+
+.light-11 {
+    top: 115px;
+    left: calc(50%);
+    transform: translateX(-50%);
+}
+
+.light-12 {
+    top: 165px;
+    left: calc(50% - 50px);
+}
+
+.light-13 {
+    top: 165px;
+    left: calc(50% + 45px);
+}
+
+.light-14 {
+    top: 165px;
+    left: calc(50%);
+    transform: translateX(-50%);
+}
+
+.light-15 {
+    top: 225px;
+    left: calc(50% - 70px);
+}
+
+.light-16 {
+    top: 225px;
+    left: calc(50% + 65px);
+}
+
+
+/* =========================================
+   FINAL CLEANUP - Edge Ornaments Only
+   ========================================= */
+
+/* Remove Strings */
+.deco-ornament::before {
+    display: none !important;
+}
+
+/* Hide Buttons */
+.tree-actions {
+    display: none !important;
+}
+
+/* Hide Garlands */
+.garlands,
+.garland {
+    display: none !important;
+}
+
+/* Place Ornaments on Triangle Edges */
+.deco-1 {
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Top */
+.deco-2 {
+    top: 55px;
+    left: 30%;
+}
+
+/* Left edge */
+.deco-3 {
+    top: 55px;
+    right: 30%;
+}
+
+/* Right edge */
+.deco-4 {
+    top: 95px;
+    left: 20%;
+}
+
+.deco-5 {
+    top: 95px;
+    right: 20%;
+}
+
+.deco-6 {
+    top: 140px;
+    left: 12%;
+}
+
+.deco-7 {
+    top: 140px;
+    right: 12%;
+}
+
+.deco-8 {
+    top: 140px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Middle */
+.deco-9 {
+    top: 190px;
+    left: 5%;
+}
+
+.deco-10 {
+    top: 190px;
+    right: 5%;
+}
+
+.deco-11 {
+    top: 190px;
+    left: 35%;
+}
+
+.deco-12 {
+    top: 190px;
+    right: 35%;
+}
+
+/* Fix Extra Tree Display (tree-layers duplicate fix) */
+.tree-layers .tree-layers {
+    display: none !important;
+}
+
+.decorative-ornaments .decorative-ornaments {
+    display: none !important;
+}
+
+/* Move lights to edges */
+.light-1 {
+    top: 30px;
+    left: calc(50% - 10px);
+}
+
+.light-2 {
+    top: 30px;
+    left: calc(50% + 5px);
+}
+
+.light-3 {
+    top: 60px;
+    left: 28%;
+}
+
+.light-4 {
+    top: 60px;
+    right: 28%;
+}
+
+.light-5 {
+    top: 100px;
+    left: 18%;
+}
+
+.light-6 {
+    top: 100px;
+    right: 18%;
+}
+
+.light-7 {
+    top: 145px;
+    left: 10%;
+}
+
+.light-8 {
+    top: 145px;
+    right: 10%;
+}
+
+.light-9 {
+    top: 195px;
+    left: 3%;
+}
+
+.light-10 {
+    top: 195px;
+    right: 3%;
+}
+
+.light-11,
+.light-12,
+.light-13,
+.light-14,
+.light-15,
+.light-16 {
+    display: none;
+}
+
+
+/* =========================================
+   USER CORRECTION - Bottom Buttons Back
+   ========================================= */
+
+/* BRING BACK Bottom Buttons */
+.tree-actions {
+    display: flex !important;
+    margin-top: 100px !important;
+}
+
+/* REMOVE decorative ornament 'buttons' (emojis) on tree */
+.decorative-ornaments {
+    display: none !important;
+}
+
+
+/* =========================================
+   REMOVE EXTRA TRIANGLE/TREE SHADOW
+   ========================================= */
+
+/* Remove ::after shadow of tree layers */
+.tree-layer::after {
+    display: none !important;
+}
+
+
+/* =========================================
+   RESPONSIVE TREE SIZES - COMPACT
+   ========================================= */
+
+/* Small screens (mobile) */
+@media screen and (max-height: 600px) {
+    .christmas-tree {
+        transform: scale(0.85) !important;
+        margin-bottom: 20px !important;
+    }
+
+    .tree-star {
+        font-size: 2rem !important;
+    }
+}
+
+@media screen and (max-height: 700px) and (min-height: 601px) {
+    .christmas-tree {
+        transform: scale(1.0) !important;
+        margin-bottom: 25px !important;
+    }
+}
+
+/* Normal screens */
+@media screen and (min-height: 701px) and (max-height: 900px) {
+    .christmas-tree {
+        transform: scale(1.2) !important;
+        margin-bottom: 30px !important;
+    }
+}
+
+/* Large screens */
+@media screen and (min-height: 901px) {
+    .christmas-tree {
+        transform: scale(1.3) !important;
+        margin-bottom: 35px !important;
+    }
+}
+
+/* Very large screens (4K etc) */
+@media screen and (min-height: 1200px) {
+    .christmas-tree {
+        transform: scale(1.5) !important;
+        margin-bottom: 40px !important;
+    }
+
+    .tree-star {
+        font-size: 3rem !important;
+    }
+}
+
+/* Width-based adjustment */
+@media screen and (max-width: 400px) {
+    .christmas-tree {
+        transform: scale(0.8) !important;
+        margin-bottom: 15px !important;
+    }
+
+    .tree-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+
+/* =========================================
+   INVERSELY PROPORTIONAL RESPONSIVE - COMPACT
+   ========================================= */
+
+/* Override previous rules */
+@media screen and (max-height: 500px) {
+    .christmas-tree {
+        transform: scale(1.1) !important;
+        margin-bottom: 20px !important;
+    }
+
+    .tree-star {
+        font-size: 2.5rem !important;
+    }
+
+    .tree-actions {
+        transform: scale(1) !important;
+    }
+
+    .tree-header {
+        transform: scale(1) !important;
+    }
+
+    .btn {
+        font-size: 0.85rem !important;
+        padding: 8px 16px !important;
+    }
+}
+
+@media screen and (min-height: 501px) and (max-height: 700px) {
+    .christmas-tree {
+        transform: scale(1.25) !important;
+        margin-bottom: 25px !important;
+    }
+
+    .tree-star {
+        font-size: 2.8rem !important;
+    }
+
+    .tree-actions {
+        transform: scale(1) !important;
+    }
+
+    .tree-header {
+        transform: scale(1) !important;
+    }
+}
+
+@media screen and (min-height: 701px) and (max-height: 900px) {
+    .christmas-tree {
+        transform: scale(1.4) !important;
+        margin-bottom: 30px !important;
+    }
+
+    .tree-star {
+        font-size: 2.5rem !important;
+    }
+}
+
+@media screen and (min-height: 901px) and (max-height: 1100px) {
+    .christmas-tree {
+        transform: scale(1.6) !important;
+        margin-bottom: 35px !important;
+    }
+
+    .tree-star {
+        font-size: 2.8rem !important;
+    }
+
+    .tree-actions {
+        transform: scale(1) !important;
+    }
+
+    .tree-header {
+        transform: scale(1) !important;
+    }
+}
+
+@media screen and (min-height: 1101px) {
+    .christmas-tree {
+        transform: scale(1.7) !important;
+        margin-bottom: 40px !important;
+    }
+
+    .tree-star {
+        font-size: 3rem !important;
+    }
+
+    .tree-actions {
+        transform: scale(1) !important;
+    }
+
+    .tree-header {
+        transform: scale(1) !important;
+    }
+
+    .btn {
+        font-size: 0.9rem !important;
+        padding: 12px 20px !important;
+    }
+}
+
+/* Inverse proportion for width too */
+@media screen and (max-width: 400px) {
+    .christmas-tree {
+        transform: scale(1.0) !important;
+        margin-bottom: 20px !important;
+    }
+
+    .tree-container {
+        padding-top: 20px !important;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .christmas-tree {
+        transform: scale(1.4) !important;
+        margin-bottom: 30px !important;
+    }
+}
+
+/* ==========================================
+   Language Selector
+   ========================================== */
+.language-selector {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+
+
+.lang-btn {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all var(--transition-medium);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.lang-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.lang-btn:active {
+    transform: translateY(1px);
+}
+
+.lang-flag {
+    font-size: 1.2rem;
+}
+
+/* Mobile position adjustment */
+@media screen and (max-width: 768px) {
+    .language-selector {
+        top: 15px;
+        left: 15px;
+    }
+
+    .lang-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}
+
+/* ==========================================
+   Tree Star - Z-Index Fix
+   ========================================== */
+.tree-star {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    z-index: 5;
+    /* In front of tree, behind ornaments (z-index 10+) */
+    animation: starPulse 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+}
+
+@keyframes starPulse {
+
+    0%,
+    100% {
+        transform: translateX(-50%) scale(1);
+        filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+    }
+
+    50% {
+        transform: translateX(-50%) scale(1.1);
+        filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1));
+    }
+}
+
+/* ==========================================
+   Success Modal (Tree Created)
+   ========================================== */
+.success-content {
+    text-align: center;
+    background: linear-gradient(135deg, #1a2a6c, #b21f1f);
+    border: 2px solid #ffd700;
+}
+
+.key-display-box {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+    border: 1px dashed rgba(255, 215, 0, 0.5);
+}
+
+.admin-key-box {
+    border-color: rgba(220, 20, 60, 0.7);
+    background: rgba(220, 20, 60, 0.1);
+}
+
+.key-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: #eee;
+}
+
+.key-value-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#display-tree-id,
+#display-admin-id {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #ffd700;
+    letter-spacing: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+
+#display-admin-id {
+    color: #ff6b6b;
+}
+
+.warning-text {
+    color: #ffcc00;
+    font-size: 0.85rem;
+    margin-top: 10px;
+}
+
+.icon-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+.icon-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.modal-actions {
+    margin-top: 20px;
+}
+
+/* ==========================================
+   Enhanced Loading Animation
+   ========================================== */
+.loading-animation {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.loading-tree {
+    font-size: 4rem;
+    animation: treeGrow 1.5s ease-in-out infinite;
+}
+
+.loading-sparkles {
+    position: absolute;
+    font-size: 2rem;
+    animation: sparkleRotate 2s linear infinite;
+}
+
+@keyframes treeGrow {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+@keyframes sparkleRotate {
+    0% {
+        transform: rotate(0deg) translateX(40px) rotate(0deg);
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: rotate(360deg) translateX(40px) rotate(-360deg);
+        opacity: 1;
+    }
+}
+
+.loading-text {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    animation: textPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes textPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* ==========================================
+   Start Tree Button (Modal)
+   ========================================== */
+#start-tree-btn {
+    background: linear-gradient(135deg, #2e7d32, #4caf50);
+    color: white;
+    border: 2px solid rgba(255, 215, 0, 0.5);
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(46, 125, 50, 0.4);
+}
+
+#start-tree-btn:hover {
+    background: linear-gradient(135deg, #388e3c, #66bb6a);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(46, 125, 50, 0.6);
+}
+
+/* ==========================================
+   Tree Container Positioning
+   ========================================== */
+.tree-container {
+    margin-top: 40px;
+    /* Tree position */
+}
+
+.button-group {
+    margin-top: 30px;
+    /* Add space above buttons */
+}
+
+/* Tree Actions (Bottom Buttons) */
+.tree-actions {
+    margin-top: -20px;
+    /* Move buttons up */
+    padding-bottom: 20px;
+}
+
+/* ==========================================
+   Secondary Button (Cancel)
+   ========================================== */
+.secondary-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.secondary-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Two buttons layout */
+.modal-actions.two-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.modal-actions.two-buttons button {
+    flex: 1 1 140px;
+    min-width: 140px;
+    max-width: 160px;
+}
+
+/* ==========================================
+   Confirm Modal (Animated)
+   ========================================== */
+.confirm-modal-content {
+    text-align: center;
+    padding: 30px;
+    max-width: 380px;
+    background: linear-gradient(145deg, #2d1b4e, #1a3a2a);
+    border: 2px solid rgba(255, 215, 0, 0.4);
+    animation: modalBounce 0.4s ease-out;
+}
+
+@keyframes modalBounce {
+    0% {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.confirm-icon {
+    font-size: 4rem;
+    margin-bottom: 15px;
+    animation: iconPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+
+    0%,
+    100% {
+        transform: scale(1) rotate(-5deg);
+    }
+
+    50% {
+        transform: scale(1.1) rotate(5deg);
+    }
+}
+
+.confirm-modal-content h2 {
+    color: #ffd700;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.confirm-modal-content p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1rem;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+/* Green "Yes, Create" button in confirm modal */
+#confirm-ok-btn {
+    background: linear-gradient(135deg, #1b5e20, #2e7d32, #43a047);
+    color: white;
+    border: 2px solid rgba(76, 175, 80, 0.5);
+    box-shadow: 0 4px 15px rgba(46, 125, 50, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#confirm-ok-btn:hover {
+    background: linear-gradient(135deg, #2e7d32, #43a047, #66bb6a);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(46, 125, 50, 0.7),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* ==========================================
+   Visit Modal - Two Input Fields
+   ========================================== */
+.visit-input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.visit-label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.visit-input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    transition: border-color 0.3s;
+}
+
+.visit-input-group input:focus {
+    outline: none;
+    border-color: rgba(255, 215, 0, 0.6);
+}
+
+.visit-input-group input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.btn.full-width {
+    width: 100%;
+    margin-top: 10px;
+}

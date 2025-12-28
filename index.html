@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noel Messages</title>
+    <meta name="description"
+        content="Kendi Noel ağacını oluştur, arkadaşlarınla paylaş ve birbirinize yılbaşı mesajları bırakın!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Mountains+of+Christmas:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Snowflakes Container -->
+    <div class="snowflakes" aria-hidden="true">
+        <div class="snowflake">❄</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❄</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❄</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❄</div>
+    </div>
+
+    <!-- Background Stars -->
+    <div id="background-stars" class="background-stars" aria-hidden="true"></div>
+
+    <!-- Off-Season Screen -->
+    <section id="off-season-screen" class="screen">
+        <div class="home-container">
+            <div class="logo-section">
+                <div class="tree-icon">🎄</div>
+                <h1 class="title">Noel Messages</h1>
+                <p class="subtitle">Yılbaşı sezonu bekleniyor...</p>
+            </div>
+
+            <div class="off-season-message glass-card">
+                <p>🎅 Yılbaşı sezonu <strong>1 Aralık - 1 Şubat</strong> arasında aktif!</p>
+                <p>Bu tarihler arasında geri gel ve kendi ağacını oluştur!</p>
+                <div class="countdown" id="countdown"></div>
+            </div>
+
+            <div class="footer-text">
+                <p>❄️ Görüşmek Üzere! ❄️</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Landing Page (Home Screen) -->
+    <section id="home-screen" class="screen active">
+        <div class="hero-content glass-card">
+            <h1><span class="icon"></span> Noel Messages</h1>
+            <p>Yılbaşı dileklerini paylaş!</p>
+        </div>
+
+
+        <div class="button-group">
+            <button id="create-tree-btn" class="btn btn-primary">
+                <span class="btn-icon">✨</span>
+                Kendi Ağacımı Oluştur
+            </button>
+
+            <div class="divider">
+                <span>veya</span>
+            </div>
+
+            <button id="visit-tree-btn" class="btn btn-secondary">
+                <span class="btn-icon">🎁</span>
+                Bir Ağacı Ziyaret Et
+            </button>
+        </div>
+
+        <div class="footer-text">
+            <p id="footer-wishes">Mutlu Yıllar!</p>
+        </div>
+        </div>
+    </section>
+
+    <!-- Tree ID Entry Modal -->
+    <div id="visit-modal" class="modal">
+        <div class="modal-content glass-card">
+            <button class="modal-close" id="close-visit-modal">&times;</button>
+            <h2>🎄 Ağaç Ziyareti</h2>
+
+            <div class="visit-input-group">
+                <label for="visit-tree-id" class="visit-label">🌲 Ağaç ID (Zorunlu)</label>
+                <input type="text" id="visit-tree-id" placeholder="Örn: ABC123" maxlength="6">
+            </div>
+
+            <div class="visit-input-group">
+                <label for="visit-admin-id" class="visit-label">🔐 Admin ID (Opsiyonel)</label>
+                <input type="text" id="visit-admin-id" placeholder="Mesaj silmek için girin" maxlength="8">
+            </div>
+
+            <button id="go-to-tree-btn" class="btn btn-primary full-width">Ağaca Git</button>
+            <p class="input-hint">Admin ID olmadan ziyaretçi olarak girersiniz</p>
+        </div>
+    </div>
+
+    <div class="language-selector">
+        <button id="lang-btn" class="lang-btn" title="Dili Değiştir / Change Language">
+            <span class="lang-text">TR</span>
+        </button>
+    </div>
+
+    <!-- Loading Screen -->
+    <section id="loading-screen" class="screen">
+        <div class="loading-container">
+            <div class="loading-animation">
+                <div class="loading-tree">🎄</div>
+                <div class="loading-sparkles">✨</div>
+            </div>
+            <p class="loading-text">Yükleniyor...</p>
+        </div>
+    </section>
+
+    <!-- Tree Not Found Screen -->
+    <section id="not-found-screen" class="screen">
+        <div class="home-container">
+            <div class="logo-section">
+                <div class="tree-icon">😢</div>
+                <h1 class="title" style="font-size: 2rem;">Ağaç Bulunamadı</h1>
+                <p class="subtitle">Bu ID'ye ait bir ağaç yok.</p>
+            </div>
+
+            <div class="button-group">
+                <button id="back-from-notfound-btn" class="btn btn-primary">
+                    <span class="btn-icon">🏠</span>
+                    Ana Sayfaya Dön
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tree View -->
+    <section id="tree-screen" class="screen">
+        <div class="tree-header">
+            <button id="back-home-btn" class="btn-icon-only">
+                <span>←</span>
+            </button>
+            <div class="tree-id-display">
+                <span class="label">Ağaç ID:</span>
+                <span id="current-tree-id" class="tree-id-value">------</span>
+                <button id="copy-id-btn" class="btn-copy" title="ID'yi Kopyala">📋</button>
+            </div>
+            <button id="share-btn" class="btn-icon-only">
+                <span>↗</span>
+            </button>
+        </div>
+
+        <div class="tree-container">
+            <!-- Star -->
+            <div class="tree-star">⭐</div>
+
+            <!-- Tree -->
+            <div class="christmas-tree">
+                <div class="tree-layer layer-1"></div>
+                <div class="tree-layer layer-2"></div>
+                <div class="tree-layer layer-3"></div>
+                <div class="tree-layer layer-4"></div>
+                <div class="tree-trunk"></div>
+
+                <!-- Ornaments (Messages will appear here) -->
+                <div id="tree-ornaments" class="tree-ornaments"></div>
+
+                <!-- Decorative Ornaments (Static) -->
+                <div class="decorative-ornaments">
+                    <span class="ornament deco-ornament deco-1">🔴</span>
+                    <span class="ornament deco-ornament deco-2">🟡</span>
+                    <span class="ornament deco-ornament deco-3">🔵</span>
+                    <span class="ornament deco-ornament deco-4">🟣</span>
+                    <span class="ornament deco-ornament deco-5">🔴</span>
+                    <span class="ornament deco-ornament deco-6">🟡</span>
+                    <span class="ornament deco-ornament deco-7">🔵</span>
+                    <span class="ornament deco-ornament deco-8">🟣</span>
+                    <span class="ornament deco-ornament deco-9">🔴</span>
+                    <span class="ornament deco-ornament deco-10">🟡</span>
+                    <span class="ornament deco-ornament deco-11">🔵</span>
+                    <span class="ornament deco-ornament deco-12">🟣</span>
+                </div>
+
+                <!-- Garland (Ribbons) -->
+                <div class="garlands">
+                    <div class="garland garland-1"></div>
+                    <div class="garland garland-2"></div>
+                    <div class="garland garland-3"></div>
+                    <div class="garland garland-4"></div>
+                </div>
+
+                <!-- Lights Container (Dynamic - Optional few) -->
+                <div id="tree-lights" class="tree-lights"></div>
+            </div>
+
+            <!-- Gift Boxes (Will be created dynamically in JavaScript) -->
+            <div id="gift-boxes-container" class="gift-boxes-container"></div>
+        </div>
+
+        <!-- Fireworks Container -->
+        <div id="fireworks-container" class="fireworks-container"></div>
+
+        <!-- Bottom Buttons -->
+        <div class="tree-actions">
+            <button id="add-message-btn" class="btn btn-primary">
+                <span class="btn-icon">💌</span>
+                Mesaj Bırak
+            </button>
+            <button id="view-all-messages-btn" class="btn btn-secondary">
+                <span class="btn-icon">🎄</span>
+                Tüm Notları Gör <span id="message-count-badge" class="badge">0</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Add Message Modal -->
+    <div id="message-modal" class="modal">
+        <div class="modal-content glass-card">
+            <button class="modal-close" id="close-message-modal">&times;</button>
+            <h2>💌 Yılbaşı Mesajı</h2>
+            <form id="message-form">
+                <div class="form-group">
+                    <label for="sender-name">Adın</label>
+                    <input type="text" id="sender-name" placeholder="Adını yaz..." required maxlength="30">
+                </div>
+                <div class="form-group">
+                    <label for="message-text">Mesajın</label>
+                    <textarea id="message-text" placeholder="Yılbaşı dileklerini yaz..." required maxlength="200"
+                        rows="4"></textarea>
+                    <span class="char-count"><span id="char-current">0</span>/200</span>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">
+                    <span class="btn-icon">🎄</span>
+                    Mesajı Ağaca As
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- All Messages Modal -->
+    <div id="all-messages-modal" class="modal">
+        <div class="modal-content glass-card modal-large">
+            <button class="modal-close" id="close-all-messages-modal">&times;</button>
+            <h2>🎄 Tüm Mesajlar</h2>
+            <div id="all-messages-list" class="messages-list">
+                <!-- Messages will be added here via JavaScript -->
+            </div>
+            <div id="no-messages" class="no-messages">
+                <p>🎄 Henüz mesaj yok!</p>
+                <p>İlk mesajı sen bırak!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copy Notification -->
+    <div id="copy-toast" class="toast">
+        <span>✓ ID Kopyalandı!</span>
+    </div>
+
+    <!-- New Tree Confirmation Modal -->
+    <div id="confirm-new-tree-modal" class="modal">
+        <div class="modal-content confirm-modal-content">
+            <div class="confirm-icon">🌲</div>
+            <h2 id="confirm-new-tree-title">Yeni Ağaç Oluştur?</h2>
+            <p id="confirm-new-tree-desc">Mevcut ağacınız silinmeyecek, sadece yeni ağaç varsayılan olacak.</p>
+            <div class="modal-actions two-buttons">
+                <button id="confirm-cancel-btn" class="secondary-btn">Vazgeç</button>
+                <button id="confirm-ok-btn" class="primary-btn">Evet, Oluştur</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tree Created Success Modal (Simple Alert) -->
+    <div id="tree-created-modal" class="modal">
+        <div class="modal-content success-content">
+            <h2 id="tree-created-title">✨ Ağaç Oluşturuldu!</h2>
+            <p id="tree-created-desc">Ağacın hazır! Aşağıdaki ID'leri kaydet:</p>
+
+            <div class="key-display-box">
+                <span class="key-label" id="tree-id-label">🌲 Ağaç ID (Paylaşılabilir):</span>
+                <div class="key-value-row">
+                    <code id="display-tree-id">ABC123</code>
+                    <button id="copy-tree-id-btn" class="icon-btn" title="Kopyala">📋</button>
+                </div>
+            </div>
+
+            <div class="key-display-box admin-key-box">
+                <span class="key-label" id="admin-id-label">🔐 Admin ID (Gizli Tut!):</span>
+                <div class="key-value-row">
+                    <code id="display-admin-id">XYZ789AB</code>
+                    <button id="copy-admin-id-btn" class="icon-btn" title="Kopyala">📋</button>
+                </div>
+            </div>
+
+            <p class="warning-text" id="admin-warning">⚠️ Admin ID'yi kaybetme! Mesaj silmek için lazım.</p>
+
+            <div class="modal-actions two-buttons">
+                <button id="cancel-tree-btn" class="secondary-btn">Vazgeç</button>
+                <button id="start-tree-btn" class="primary-btn">Ağacıma Git</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
